@@ -12,8 +12,6 @@
 
 ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-  enable_extension "pg_trgm"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -102,8 +100,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.string "phone"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.boolean "quick_checkout", default: false
     t.bigint "state_id"
     t.string "state_name"
@@ -160,8 +158,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "last_sign_in_ip"
     t.datetime "locked_at"
     t.string "login"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
@@ -186,8 +184,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.integer "attachment_width"
     t.datetime "created_at", precision: nil
     t.integer "position"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.string "session_id"
     t.string "type", limit: 75
     t.datetime "updated_at", precision: nil
@@ -255,8 +253,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "month"
     t.string "name"
     t.bigint "payment_method_id"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "year"
@@ -270,8 +268,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   create_table "spree_custom_domains", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.boolean "default", default: false, null: false
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.boolean "status", default: false
     t.bigint "store_id", null: false
     t.datetime "updated_at", null: false
@@ -306,8 +304,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   create_table "spree_customer_returns", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "number"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "stock_location_id"
     t.bigint "store_id"
     t.datetime "updated_at", null: false
@@ -351,7 +349,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.datetime "created_at", null: false
     t.integer "format", null: false
     t.string "number", limit: 32, null: false
-    t.jsonb "search_params"
+    t.json "search_params"
     t.bigint "store_id", null: false
     t.string "type", null: false
     t.datetime "updated_at", null: false
@@ -542,9 +540,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.decimal "pre_tax_amount", precision: 12, scale: 4, default: "0.0", null: false
     t.decimal "price", precision: 10, scale: 2, null: false
     t.bigint "price_list_id"
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.decimal "promo_total", precision: 10, scale: 2, default: "0.0"
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.integer "quantity", null: false
     t.bigint "tax_category_id"
     t.decimal "taxable_adjustment_total", precision: 10, scale: 2, default: "0.0", null: false
@@ -597,8 +595,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   create_table "spree_newsletter_subscribers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "verification_token"
@@ -680,8 +678,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "name", limit: 100
     t.integer "position", default: 0, null: false
     t.string "presentation", limit: 100
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
     t.index ["filterable"], name: "index_spree_option_types_on_filterable"
     t.index ["name"], name: "index_spree_option_types_on_name", unique: true
@@ -714,8 +712,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.bigint "option_type_id"
     t.integer "position"
     t.string "presentation"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_spree_option_values_on_name"
     t.index ["option_type_id", "name"], name: "index_spree_option_values_on_option_type_id_and_name", unique: true
@@ -760,9 +758,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "number", limit: 32
     t.string "payment_state"
     t.decimal "payment_total", precision: 10, scale: 2, default: "0.0"
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.decimal "promo_total", precision: 10, scale: 2, default: "0.0"
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.bigint "ship_address_id"
     t.string "shipment_state"
     t.decimal "shipment_total", precision: 10, scale: 2, default: "0.0", null: false
@@ -810,9 +808,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "name"
     t.integer "position", default: 0
     t.text "preferences"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
-    t.jsonb "settings"
+    t.json "private_metadata"
+    t.json "public_metadata"
+    t.json "settings"
     t.string "type"
     t.datetime "updated_at", null: false
     t.index ["id", "type"], name: "index_spree_payment_methods_on_id_and_type"
@@ -831,8 +829,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "gateway_customer_profile_id"
     t.string "gateway_payment_profile_id"
     t.bigint "payment_method_id"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.string "type"
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id"
@@ -851,8 +849,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "number"
     t.bigint "order_id"
     t.bigint "payment_method_id"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.string "response_code"
     t.bigint "source_id"
     t.string "source_type"
@@ -867,7 +865,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   create_table "spree_paypal_checkout_orders", force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
-    t.jsonb "data"
+    t.json "data"
     t.bigint "order_id", null: false
     t.bigint "payment_method_id", null: false
     t.string "paypal_id", null: false
@@ -1058,9 +1056,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "meta_keywords"
     t.string "meta_title"
     t.string "name", default: "", null: false
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.boolean "promotionable", default: true
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.bigint "shipping_category_id"
     t.string "slug"
     t.string "status", default: "draft", null: false
@@ -1187,9 +1185,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "name"
     t.integer "number_of_codes"
     t.string "path"
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.bigint "promotion_category_id"
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.datetime "starts_at", precision: nil
     t.string "type"
     t.datetime "updated_at", null: false
@@ -1223,8 +1221,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "name"
     t.integer "position", default: 0
     t.string "presentation", null: false
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
     t.index ["filter_param"], name: "index_spree_properties_on_filter_param"
     t.index ["filterable"], name: "index_spree_properties_on_filterable"
@@ -1265,8 +1263,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
   create_table "spree_prototypes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "updated_at", null: false
   end
 
@@ -1283,8 +1281,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.bigint "payment_id"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "refund_reason_id"
     t.bigint "refunder_id"
     t.bigint "reimbursement_id"
@@ -1430,9 +1428,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "number"
     t.bigint "order_id"
     t.decimal "pre_tax_amount", precision: 12, scale: 4, default: "0.0", null: false
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.decimal "promo_total", precision: 10, scale: 2, default: "0.0"
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.datetime "shipped_at", precision: nil
     t.string "state"
     t.bigint "stock_location_id"
@@ -1480,8 +1478,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.integer "estimated_transit_business_days_max"
     t.integer "estimated_transit_business_days_min"
     t.string "name"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "tax_category_id"
     t.string "tracking_url"
     t.datetime "updated_at", null: false
@@ -1530,8 +1528,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.integer "count_on_hand", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "deleted_at", precision: nil
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "stock_location_id"
     t.datetime "updated_at", null: false
     t.bigint "variant_id"
@@ -1587,8 +1585,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.datetime "created_at", null: false
     t.bigint "destination_location_id"
     t.string "number"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.string "reference"
     t.bigint "source_location_id"
     t.string "type"
@@ -1639,8 +1637,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.text "memo"
     t.bigint "originator_id"
     t.string "originator_type"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "store_id"
     t.bigint "type_id"
     t.datetime "updated_at", null: false
@@ -1697,11 +1695,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "new_order_notifications_email"
     t.integer "page_links_count", default: 0, null: false
     t.text "preferences"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.string "seo_robots"
     t.string "seo_title"
-    t.jsonb "settings"
+    t.json "settings"
     t.text "storefront_custom_code_body_end"
     t.text "storefront_custom_code_body_start"
     t.text "storefront_custom_code_head"
@@ -1801,8 +1799,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.datetime "deleted_at", precision: nil
     t.boolean "included_in_price", default: false
     t.string "name"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.boolean "show_rate_in_label", default: true
     t.bigint "tax_category_id"
     t.datetime "updated_at", null: false
@@ -1845,8 +1843,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.integer "position", default: 0
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "store_id"
     t.datetime "updated_at", null: false
     t.index ["name", "store_id"], name: "index_spree_taxonomies_on_name_and_store_id", unique: true
@@ -1881,8 +1879,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "permalink"
     t.integer "position", default: 0
     t.string "pretty_name"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.bigint "rgt"
     t.string "rules_match_policy", default: "all", null: false
     t.string "sort_order", default: "manual", null: false
@@ -1932,8 +1930,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "perishable_token"
     t.string "persistence_token"
     t.string "phone"
-    t.jsonb "private_metadata"
-    t.jsonb "public_metadata"
+    t.json "private_metadata"
+    t.json "public_metadata"
     t.datetime "remember_created_at", precision: nil
     t.string "remember_token"
     t.datetime "reset_password_sent_at", precision: nil
@@ -1963,9 +1961,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.integer "image_count", default: 0, null: false
     t.boolean "is_master", default: false
     t.integer "position"
-    t.jsonb "private_metadata"
+    t.json "private_metadata"
     t.bigint "product_id"
-    t.jsonb "public_metadata"
+    t.json "public_metadata"
     t.string "sku", default: "", null: false
     t.bigint "tax_category_id"
     t.boolean "track_inventory", default: true
@@ -1991,7 +1989,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "error_type"
     t.string "event_name", null: false
     t.integer "execution_time"
-    t.jsonb "payload", null: false
+    t.json "payload", null: false
     t.text "request_errors"
     t.text "response_body"
     t.integer "response_code"
@@ -2011,7 +2009,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.datetime "deleted_at"
     t.string "secret_key", null: false
     t.bigint "store_id", null: false
-    t.jsonb "subscriptions", null: false
+    t.json "subscriptions", null: false
     t.datetime "updated_at", null: false
     t.string "url", null: false
     t.index ["active"], name: "index_spree_webhook_endpoints_on_active"
@@ -2038,7 +2036,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.boolean "active", default: false
     t.datetime "created_at", precision: nil, null: false
     t.string "secret_key", null: false
-    t.jsonb "subscriptions"
+    t.json "subscriptions"
     t.datetime "updated_at", precision: nil, null: false
     t.string "url", null: false
     t.index ["active"], name: "index_spree_webhooks_subscribers_on_active"
