@@ -233,7 +233,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.bigint "promotion_id"
     t.integer "state", default: 0, null: false
     t.datetime "updated_at", null: false
-    t.index ["code"], name: "index_spree_coupon_codes_on_code", unique: true, where: "(deleted_at IS NULL)"
     t.index ["deleted_at"], name: "index_spree_coupon_codes_on_deleted_at"
     t.index ["order_id"], name: "index_spree_coupon_codes_on_order_id"
     t.index ["promotion_id"], name: "index_spree_coupon_codes_on_promotion_id"
@@ -297,7 +296,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.bigint "store_id", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_spree_customer_groups_on_deleted_at"
-    t.index ["store_id", "name"], name: "index_spree_customer_groups_on_store_id_and_name", unique: true, where: "(deleted_at IS NULL)"
     t.index ["store_id"], name: "index_spree_customer_groups_on_store_id"
   end
 
@@ -974,8 +972,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.bigint "variant_id", null: false
     t.index ["deleted_at"], name: "index_spree_prices_on_deleted_at"
     t.index ["price_list_id"], name: "index_spree_prices_on_price_list_id"
-    t.index ["variant_id", "currency", "price_list_id"], name: "index_spree_prices_on_variant_currency_price_list", unique: true, where: "((price_list_id IS NOT NULL) AND (deleted_at IS NULL) AND (amount IS NOT NULL))"
-    t.index ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency", unique: true, where: "((price_list_id IS NULL) AND (deleted_at IS NULL) AND (amount IS NOT NULL))"
     t.index ["variant_id"], name: "index_spree_prices_on_variant_id"
   end
 
@@ -1538,7 +1534,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.index ["stock_location_id", "variant_id", "deleted_at"], name: "stock_item_by_loc_var_id_deleted_at", unique: true
     t.index ["stock_location_id", "variant_id"], name: "stock_item_by_loc_and_var_id"
     t.index ["stock_location_id"], name: "index_spree_stock_items_on_stock_location_id"
-    t.index ["variant_id", "stock_location_id"], name: "index_spree_stock_items_unique_without_deleted_at", unique: true, where: "(deleted_at IS NULL)"
     t.index ["variant_id"], name: "index_spree_stock_items_on_variant_id"
   end
 
@@ -1777,7 +1772,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_155646) do
     t.string "name"
     t.integer "taggings_count", default: 0
     t.datetime "updated_at", null: false
-    t.index "lower((name)::text) varchar_pattern_ops", name: "index_spree_tags_on_lower_name"
     t.index ["name"], name: "index_spree_tags_on_name", unique: true
   end
 
