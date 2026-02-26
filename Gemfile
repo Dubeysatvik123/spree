@@ -11,7 +11,7 @@ gem "bootsnap", require: false
 
 # Database
 gem "mysql2", "~> 0.5"
-
+gem "devise"
 # Assets
 gem "sprockets-rails"
 gem "image_processing", "~> 1.13"

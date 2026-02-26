@@ -144,6 +144,12 @@ GEM
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    devise (5.0.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 7.0)
+      responders
+      warden (~> 1.2.3)
     doorkeeper (5.8.2)
       railties (>= 5)
     drb (2.2.3)
@@ -290,6 +296,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.1-x86_64-linux-musl)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     ostruct (0.6.3)
     pagy (43.3.1)
       json
@@ -370,6 +377,9 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
+    responders (3.2.0)
+      actionpack (>= 7.0)
+      railties (>= 7.0)
     rexml (3.4.4)
     ruby-oembed (0.18.1)
     ruby-vips (2.3.0)
@@ -537,6 +547,8 @@ GEM
     validates_zipcode (0.5.4)
       activemodel (>= 4.2.0)
     wannabe_bool (0.7.1)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.3.0)
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
@@ -566,6 +578,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.2)
   capistrano3-puma
   debug
+  devise
   image_processing (~> 1.13)
   lograge
   mini_magick
