@@ -6,7 +6,7 @@ ruby "3.2.2"
 
 # Core Rails
 gem "rails", "~> 8.1"
-gem "puma", "~> 6.4"
+gem "puma", "~> 7.2"
 gem "bootsnap", require: false
 
 # Database
